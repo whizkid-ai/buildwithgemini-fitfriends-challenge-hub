@@ -30,7 +30,17 @@ def evaluate(instance):
         prompt += f"Expected Answer (ground truth): {reference}\n"
     prompt += f"Full Agent Trace: {instance.get('agent_data', '')}\n"
 
-    client = genai.Client()  # AI Studio (GEMINI_API_KEY) or Agent Platform (ADC)
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+    if os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "true").lower() in ("true", "1"):
+        client = genai.Client(
+            vertexai=True,
+            project=os.environ.get("GOOGLE_CLOUD_PROJECT", "qwiklabs-gcp-04-6e9778b27cff"),
+            location=os.environ.get("GOOGLE_CLOUD_LOCATION", "global"),
+        )
+    else:
+        client = genai.Client()
     response = client.models.generate_content(
         model="gemini-3.6-flash",
         contents=prompt,

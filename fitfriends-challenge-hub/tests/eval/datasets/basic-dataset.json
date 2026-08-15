@@ -1,30 +1,47 @@
 {
   "eval_cases": [
     {
-      "eval_case_id": "greeting",
+      "eval_case_id": "ranking_and_pace_query",
       "prompt": {
         "role": "user",
-        "parts": [{"text": "Hello, what can you help me with?"}]
+        "parts": [
+          {
+            "text": "What is my current ranking in the August Steps Challenge, and how many daily steps do I need to catch up to 1st place?"
+          }
+        ]
       }
     },
     {
-      "eval_case_id": "weather_query",
+      "eval_case_id": "sync_metrics",
       "prompt": {
         "role": "user",
-        "parts": [{"text": "What's the weather like in San Francisco?"}]
+        "parts": [
+          {
+            "text": "Sync 11500 steps and 2300 calories for today."
+          }
+        ]
       }
     },
     {
-      "eval_case_id": "capital_lookup",
+      "eval_case_id": "create_challenge",
       "prompt": {
         "role": "user",
-        "parts": [{"text": "What is the capital of France?"}]
-      },
-      "reference": {
-        "response": {
-          "role": "model",
-          "parts": [{"text": "The capital of France is Paris."}]
-        }
+        "parts": [
+          {
+            "text": "Create a private challenge called 'Fall Cycle Sprint' with metric calories and goal 50000 starting 2026-09-01 and ending 2026-09-30."
+          }
+        ]
+      }
+    },
+    {
+      "eval_case_id": "generate_badge",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Generate a personalized achievement trophy badge for the August Steps Challenge."
+          }
+        ]
       }
     }
   ]
